@@ -1,0 +1,118 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background: linear-gradient(135deg, #1a1a1a, #222, #3a3a5a);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.calculator {
+  background-color: #fff;
+  border: 2px solid #333;
+  border-radius: 8px;
+  padding: 15px;
+  background-color: #333;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  margin: auto;
+  width: 320px;
+}
+
+#result {
+  width: 100%;
+  height: 60px;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  padding: 10px;
+  text-align: right;
+  border: none;
+  border-radius: 5px;
+  background-color: #222;
+  color: #fff;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* buttons */
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.zero {
+  grid-column: span 2;
+}
+
+.btn {
+  padding: 15px;
+  font-size: 1.2em;
+  background-color: rgb(36, 33, 33);
+  color: whitesmoke;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+/* color styling for different buttons  */
+.btn.operator {
+  background-color: #f4a261;
+  color: black;
+}
+.btn.memory {
+  background-color: #98bff1;
+  color: black;
+}
+.btn.clean {
+  background-color: #ce3c3cc0;
+  grid-column: span 2;
+}
+
+/* hover effect on each buttons  */
+.btn:hover {
+  background-color: #383535;
+}
+.btn.operator:hover {
+  background-color: #fc9948;
+}
+.btn.memory:hover {
+  background-color: #6d99d3;
+}
+.btn.clean:hover {
+  background-color: #bb2727d9;
+}
+
+/* active state so when a button is pressed down/clicked and gives immediate feedback to the user */
+.btn:active {
+  background-color: #2e2b2b;
+}
+.btn.operator:active {
+  background-color: #f57914;
+}
+.btn.memory:active {
+  background-color: #5b87bf;
+}
+.btn.clean:active {
+  background-color: #a21f1fe6;
+}
+
+/* Responsive design  */
+@media (max-width: 480px) {
+  .calculator {
+    width: 100%;
+    max-width: 320px;
+    padding: 10px;
+  }
+  #result {
+    font-size: 1.3rem;
+    height: 50px;
+  }
+  .btn {
+    padding: 10px;
+    font-size: 1rem;
+  }
+  .buttons {
+    gap: 8px;
+  }
+}
