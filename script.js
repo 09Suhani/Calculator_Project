@@ -34,6 +34,7 @@ function handleButtonClick(button) {
       processInput(value); // handling the value based on type like number, operator, etc.
       break;
   }
+  display.focus(); // to maintain focus after each button interaction
 }
 
 // now differet buttons functionality
@@ -54,6 +55,7 @@ function processInput(value) {
 function clear() {
   expression = "";
   display.value = "";
+  display.focus(); // ensures focus after clearing
 }
 
 // Handling operations
@@ -75,8 +77,10 @@ function calculate() {
       expression = result.toString();
       display.value = expression;
     }
+    display.focus(); //keeps the focus on the calculator after each calculation
   } catch (error) {
     display.value = "Error"; // For invalid expressions
+    display.focus();
   }
 }
 
@@ -88,10 +92,15 @@ document.addEventListener("keydown", (event) => {
   } else if (key === "Enter") {
     calculate();
   } else if (key === "Backspace") {
-    clear();
+    if (expression === "") {
+      event.preventDefault(); //Prevents focus shift if expression is empty
+    } else {
+      clear();
+    }
   } else if (["+", "-", "*", "/"].includes(key)) {
     addOperator(key);
   }
+  display.focus(); //ensures focus stays on the display after each Keypress
 });
 
 //Square root function
@@ -126,3 +135,5 @@ function memoryClear() {
   display.value = "0";
   expression = ""; // Clear expression
 }
+
+window.onload = () => display.focus(); // to make sure that display gets the focus when the page loads.
